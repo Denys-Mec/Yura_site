@@ -1,0 +1,13 @@
+{% if list %}
+<ul>
+  {% for item in list %}
+    <li>
+      <t1>{{ item.name }}</t1>
+      <p>{{ item.content }}</p>
+      <i>Authot: {{ item.author.name }} </i> 
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+Sorry, we have no atricle to show you(
+{% endif %}
