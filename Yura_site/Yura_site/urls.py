@@ -15,11 +15,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 from news import views
+from news.views import UpdateArticleView, CreateArticleView, DeleteArticleView, ArticleView
+
+
 
 urlpatterns = [
+    path('', ArticleView.as_view(), name="api"),
     path('admin/', admin.site.urls),
-    path('news/', views.show_all, name="show_all")
-]
+    path('news/', views.show_all, name="news"),
+    path('news/<id>/', views.show_item, name="show_item"),
+    path('<int:pk>/edit/', UpdateArticleView.as_view(), name="edit_article"),#FormUpdateArticleView.as_view()),
+    path('<int:pk>/delete/', DeleteArticleView.as_view(), name="delete_article"),
+    path('add/', CreateArticleView.as_view(), name="add_article"),
+    path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
+    path('summernote/', include('django_summernote.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if item %}
+
+
+  <div class="card mb-3">
+    <img src="https://s.aolcdn.com/images/dims?client=fh7w6q744eiognjk&signature=381c7a249b71cfc699e1fce6cd6a81ec7309c8d1&image_uri=https%3A%2F%2Fs.aolcdn.com%2Fos%2Fab%2F_cms%2F2023%2F02%2F06094821%2Frg-retromobile-2023-33.jpg&thumbnail=480%2C270&quality=80" class="card-img-top" alt="..." style="width: 500;">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.name }}</h5>
+      <p class="card-text">{{ item.content|safe }}</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago by {{ item.author.name }}</small></p>
+      
+    </div>
+  </div>
+
+
+
+
+{% else %}
+Sorry, we have no atricle to show you(
+{% endif %}
+{% endblock %}

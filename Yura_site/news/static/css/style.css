@@ -1,0 +1,31 @@
+body {
+	background-color: #EFEFEF;
+}
+
+.header {
+	background-color: #373737;
+/*	height: 55px;*/
+	padding-bottom: 3px;
+
+}
+
+.header-content {
+	background-color: #373737;
+	border-bottom: 3px solid #fff;
+
+/*  	margin-bottom: -6px;*/
+}
+
+.nav-item {
+	color: #fff;
+}
+
+.nav-item:hover, .nav-item:focus {
+	color: #7BD289;
+}
+
+/*.nav-item:focus {
+	color: #518C5B;
+}
+
+*/
