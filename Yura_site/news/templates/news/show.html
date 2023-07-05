@@ -2,24 +2,147 @@
 
 {% block content %}
 {% if list %}
-<a  class="btn btn-primary" href="{% url 'add_article' %}">+</a>
-{% for item in list %}
-  <div class="card mb-3">
-    <img src="https://s.aolcdn.com/images/dims?client=fh7w6q744eiognjk&signature=381c7a249b71cfc699e1fce6cd6a81ec7309c8d1&image_uri=https%3A%2F%2Fs.aolcdn.com%2Fos%2Fab%2F_cms%2F2023%2F02%2F06094821%2Frg-retromobile-2023-33.jpg&thumbnail=480%2C270&quality=80" class="card-img-top" alt="..." style="width: 500;">
-    <div class="card-body">
-      <h5 class="card-title">{{ item.name }}</h5>
-      <p class="card-text">{{ item.content|safe }}</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago by {{ item.author.name }}</small></p>
-      <!--  -->
-      <a href="{% url 'news' %}{{ item.pk }}">Читати далі</a>
-      <a href="{% url 'edit_article' item.id %}">Редагувати</a>
-      <a href="{% url 'delete_article' item.id %}" class="btn btn-danger">Видалити</a>
+
+<!-- table of top news -->
+<br>
+<!-- Carousel -->
+<div class="row">
+  <div id="carouselExampleIndicators" class="carousel slide carousel-of-news" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+
+
+      <div class="carousel-item active">
+        <div class="carousel-image" style="background-image: url(https://images.pexels.com/photos/1804035/pexels-photo-1804035.jpeg?cs=srgb&dl=pexels-sohel-patel-1804035.jpg&fm=jpg);">
+          <a href="youtube.com" class="top-image-container">
+            <div class="top-image-text"><p>Some text for the post.</p></div>
+          </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-image" style="background-image: url(https://images.pexels.com/photos/1493079/pexels-photo-1493079.jpeg);">
+          <a href="youtube.com" class="top-image-container">
+            <div class="top-image-text"><p>Some text for the post.</p></div>
+          </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-image" style="background-image: url(https://watermark.lovepik.com/photo/20211120/large/lovepik-simple-picture_500447536.jpg);">
+          <a href="youtube.com" class="top-image-container">
+            <div class="top-image-text"><p>Some text for the post.</p></div>
+          </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-image" style="background-image: url(https://images.pexels.com/photos/1493079/pexels-photo-1493079.jpeg);">
+          <a href="youtube.com" class="top-image-container">
+            <div class="top-image-text"><p>Some text for the boo boo boo boo boo bla bla bla bla bla post.</p></div>
+          </a>
+        </div>
+      </div>
+
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="table-of-news">
+  <div class="row">
+    <div class="col table-image" style="background-image: url(https://images.pexels.com/photos/1804035/pexels-photo-1804035.jpeg?cs=srgb&dl=pexels-sohel-patel-1804035.jpg&fm=jpg); height: 35vw;">
+        <a href="youtube.com" class="top-image-container">
+          <div class="top-image-text"><p>Some text for the post.</p></div>
+        </a>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col table-image" style="background-image: url(https://images.pexels.com/photos/1493079/pexels-photo-1493079.jpeg); height: 17.5vw;"> 
+            <a href="youtube.com" class="top-image-container"><div class="top-image-text"><p>Some text for the post.</p></div></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col table-image" style="background-image: url(https://watermark.lovepik.com/photo/20211120/large/lovepik-simple-picture_500447536.jpg);height: 17.5vw;">  
+            <a href="youtube.com" class="top-image-container"><div class="top-image-text"><p>Some text for the post.</p></div></a> 
+          </div>
+          <div class="col table-image" style="background-image: url(https://images.pexels.com/photos/1493079/pexels-photo-1493079.jpeg); height: 17.5vw;"> 
+            <a href="youtube.com" class="top-image-container"><div class="top-image-text"><p>Some text for the boo boo boo boo boo bla bla bla bla bla post.</p></div></a> 
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-{% endfor %}
+      
+<br>
+
+<a  class="btn btn-primary" href="{% url 'add_article' %}">+</a>
+<br>
+<div class="row justify-content-center">
+  <div class="col-lg-3 col-sm-5 col-11">
+    <br><br>
+    <div class="list-of-news">
+      <h4>Журнал новин</h4><br> <br>
+      <a href="youtube"> 08.Jun.2023 Поліція посилила патрулювання біля Київської ГЕС </a> <br> <br>
+      <a href="youtube"> 09.Jun.2023 Відновлення Каховської ГЕС та супутні роботи коштуватимуть орієнтовно €2 мільярди – Шмигаль </a> <br><br>
+      <a href="youtube"> 09.Jun.2023 Ісландія призупиняє роботу посольства у Москві </a> <br><br>
+      <a href="youtube"> 09.Jun.2023 Росіяни перед підривом Каховської ГЕС активно мародерили на Херсонщині – Центр нацспротиву </a> <br><br>
+      <a href="youtube"> 09.Jun.2023 Споживчі ціни у травні зросли на 0,5% - Держстат </a> <br>
+    </div>
+  </div>
+  <div class="col-lg-9 col-sm-7 col-11">
+    <div class="category-title">Новинки спорту</div>
+      <div class="row justify-content-md-left">
+
+        
 
 
-{% include "news/show-new.html" %}
+        {% for item in list %}
+          <div class="col-xs-11 col-sm-11 col-md-6 col-xl-3">
+            <div class="post-card">
+              <a href="{% url 'news' %}{{ item.pk }}"> 
+                <div class="card-image" style="background-image: url(https://s.aolcdn.com/images/dims?client=fh7w6q744eiognjk&signature=381c7a249b71cfc699e1fce6cd6a81ec7309c8d1&image_uri=https%3A%2F%2Fs.aolcdn.com%2Fos%2Fab%2F_cms%2F2023%2F02%2F06094821%2Frg-retromobile-2023-33.jpg&thumbnail=480%2C270&quality=80);"></div>
+                <div class="post-card-text">{{ item.name }}</div>
+                <br>
+              </a>
+            </div>
+          </div>
+          
+        {% endfor %}
+
+      </div>
+
+      <div class="category-title">Шось з культури</div>
+      <div class="row justify-content-md-left">
+
+        
+        {% for item in list %}
+          <div class="col-xs-11 col-sm-11 col-md-6 col-xl-3">
+            <div class="post-card">
+              <a href="{% url 'news' %}{{ item.pk }}"> 
+                <div class="card-image" style="background-image: url(https://s.aolcdn.com/images/dims?client=fh7w6q744eiognjk&signature=381c7a249b71cfc699e1fce6cd6a81ec7309c8d1&image_uri=https%3A%2F%2Fs.aolcdn.com%2Fos%2Fab%2F_cms%2F2023%2F02%2F06094821%2Frg-retromobile-2023-33.jpg&thumbnail=480%2C270&quality=80);"></div>
+                <div class="post-card-text">{{ item.name }}</div>
+                <br>
+              </a>
+            </div>
+          </div>
+          
+        {% endfor %}
+
+      </div>
+
+  </div>  
+  
+</div>
+
+
+<!-- {% include "news/show-new.html" %} -->
 {% else %}
 Sorry, we have no atricle to show you(
 {% endif %}
