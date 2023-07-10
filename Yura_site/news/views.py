@@ -38,6 +38,9 @@ class ArticleView(APIView):
             serializer.save()
             return(serializer.data)
 
+def Myadmin(request):
+    template = loader.get_template("myadmin.html")
+    return HttpResponse(template.render(None, request))
 
 def show_all(request):
 
@@ -63,45 +66,46 @@ def show_item(request, id:int):
     }
     return HttpResponse(template.render(context, request))
 
-def edit_article(request, article:Article):
-    if request.method == 'POST':
-        print(request.POST)
-        name = request.POST['name']
-        author = request.POST['author']
-        content = request.POST['content']
-        date = request.POST['date']
-        article = Article(
-                name = name,
-                author = author,
-                content = content,
-                date = date,
-            )
-        print(Article)
-    context ={}
+# def edit_article(request, article:Article):
+#     if request.method == 'POST':
+#         print(request.POST)
+#         name = request.POST['name']
+#         author = request.POST['author']
+#         content = request.POST['content']
+#         date = request.POST['date']
+#         article = Article(
+#                 name = name,
+#                 author = author,
+#                 content = content,
+#                 date = date,
+#             )
+#         print(Article)
+#     context ={}
 
-    # create object of form
-    form = FormUpdateArticle(instance=article)
+#     # create object of form
+#     form = FormUpdateArticle(instance=article)
 
-    # check if form data is valid
-    if form.is_valid():
-        # save the form data to model
-        form.save()
+#     # check if form data is valid
+#     if form.is_valid():
+#         # save the form data to model
+#         form.save()
 
-    context['form']= form
-    return render(request, "editor.html", context)
+#     context['form']= form
+#     return render(request, "news/editor.html", context)
 
-def update_article(request, id:int):
-    return edit_article(request, Article.objects.get(pk=id))
+# def update_article(request, id:int):
+#     return edit_article(request, Article.objects.get(pk=id))
 
-def add_new_article(request):
-    return edit_article(request, Article())
+# def add_new_article(request):
+#     return edit_article(request, Article())
 
 
 class UpdateArticleView(UpdateView): # new
     model = Article
     form_class = FormUpdateArticle
-    # fields = '__all__'
-    template_name = 'editor.html'
+   
+    # fields = ["name", "author", "content", "date"]
+    template_name = 'news/editor.html'
     success_url = reverse_lazy('news')
 
 class DeleteArticleView(DeleteView):
@@ -113,7 +117,7 @@ class CreateArticleView(CreateView):
     model = Article
     form_class = FormUpdateArticle
     # fields = '__all__'
-    template_name = 'editor.html'
+    template_name = 'news/editor.html'
     success_url = reverse_lazy('news')
 
 #########################################################################

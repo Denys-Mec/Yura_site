@@ -28,6 +28,7 @@ from news.views import UpdateArticleView, CreateArticleView, DeleteArticleView, 
 urlpatterns = [
     path('', ArticleView.as_view(), name="api"),
     path('admin/', admin.site.urls),
+    path('myadmin/', views.Myadmin, name="admin"),
     path('news/', views.show_all, name="news"),
     path('news/<id>/', views.show_item, name="show_item"),
     path('<int:pk>/edit/', UpdateArticleView.as_view(), name="edit_article"),#FormUpdateArticleView.as_view()),

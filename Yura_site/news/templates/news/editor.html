@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Create new blog{% endblock title %}
+
+{% block content %}
+<div class="row ">
+	<div class="col ">
+		<form method="post" class="" >
+		    {% csrf_token %}
+		    <h5>Назва статті</h5>
+		    <div class="formInput">{{ form.name }}</div>
+		    <br>
+		    <h5>Контент</h5>
+		    {{ form.content }}
+		    {{ form.media }}
+		    <!-- {{form.as_p}} -->
+		    <button type="submit" class="btn btn-success">Post blog</button>
+		</form>
+	</div>
+</div>
+
+
+<script>
+    var name = "{{ user.id }}"
+    document.getElementById("author").value = name;
+</script>
+
+{% endblock content %}
